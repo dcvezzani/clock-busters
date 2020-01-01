@@ -6,22 +6,25 @@
 [node name="level" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+mouse_filter = 2
 
 [node name="level-gameplay-centered" type="Control" parent="."]
 anchor_left = 0.5
 anchor_right = 0.5
 margin_left = -20.0
 margin_right = -20.0
+mouse_filter = 2
 
 [node name="level-gameplay" parent="level-gameplay-centered" instance=ExtResource( 1 )]
 
-[node name="level-ui" type="Control" parent="." instance=ExtResource( 2 )]
+[node name="level-ui" parent="." instance=ExtResource( 2 )]
 
 [node name="clock-value" type="Control" parent="level-ui"]
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_top = -218.0
+mouse_filter = 2
 
 [node name="Label" type="Label" parent="level-ui/clock-value"]
 anchor_right = 1.0
@@ -36,6 +39,7 @@ text = "10:00"
 [node name="clock-countdown" type="Control" parent="level-ui"]
 anchor_right = 1.0
 margin_bottom = 100.0
+mouse_filter = 2
 
 [node name="Label" type="Label" parent="level-ui/clock-countdown"]
 margin_left = 494.267
