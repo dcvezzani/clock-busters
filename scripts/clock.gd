@@ -19,3 +19,5 @@ func _on_clock_input_event(viewport, event, shape_idx):
 			print("mouse button click detected")
 			self.queue_free()
 
+func set_time(time):
+	$time.text = str(time)

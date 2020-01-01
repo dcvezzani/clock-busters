@@ -15,4 +15,17 @@ texture = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
+
+[node name="time" type="Label" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -45.5625
+margin_top = -29.6274
+margin_right = -26.5625
+margin_bottom = -15.6274
+rect_scale = Vector2( 5, 5 )
+text = "0"
+align = 1
 [connection signal="input_event" from="." to="." method="_on_clock_input_event"]
