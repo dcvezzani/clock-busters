@@ -24,3 +24,4 @@ func _on_clock_input_event(viewport, event, shape_idx):
 func set_time(time):
 	self.time = time
 	$time.text = str(time)
+	$clockHands.updateHands(time * 1.0)

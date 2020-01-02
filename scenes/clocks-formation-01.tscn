@@ -7,31 +7,31 @@
 script = ExtResource( 1 )
 
 [node name="clock" parent="." instance=ExtResource( 2 )]
-position = Vector2( -216, -1118 )
+position = Vector2( -104.093, -570.546 )
 
 [node name="clock2" parent="." instance=ExtResource( 2 )]
-position = Vector2( 20, -1004 )
+position = Vector2( -46.0934, -462.546 )
 
 [node name="clock3" parent="." instance=ExtResource( 2 )]
-position = Vector2( 8, -302 )
+position = Vector2( -47.0934, -218.546 )
 
 [node name="clock4" parent="." instance=ExtResource( 2 )]
-position = Vector2( 210, -1152 )
+position = Vector2( 110.907, -556.546 )
 
 [node name="clock5" parent="." instance=ExtResource( 2 )]
-position = Vector2( 180, -476 )
+position = Vector2( 114.907, -169.546 )
 
 [node name="clock6" parent="." instance=ExtResource( 2 )]
-position = Vector2( -218, -844 )
+position = Vector2( -96.0934, -348.546 )
 
 [node name="clock7" parent="." instance=ExtResource( 2 )]
-position = Vector2( 134, -760 )
+position = Vector2( 106.907, -418.546 )
 
 [node name="clock8" parent="." instance=ExtResource( 2 )]
-position = Vector2( -116, -610 )
+position = Vector2( 68.9066, -290.746 )
 
 [node name="clock9" parent="." instance=ExtResource( 2 )]
-position = Vector2( -244, -292 )
+position = Vector2( -98.0934, -100.546 )
 
 [node name="clock10" parent="." instance=ExtResource( 2 )]
-position = Vector2( 208, -150 )
+position = Vector2( 43.9066, -75.5459 )
