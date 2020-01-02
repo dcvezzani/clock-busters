@@ -27,18 +27,18 @@ func _ready():
 	rng.randomize()	
 	var score = get_tree().get_nodes_in_group("score")[0]
 	score.text = str(self.score)
-	
-	available_times = shuffleList(available_hours)
-	
-	var clock_value = get_tree().get_nodes_in_group("clock-value")[0]
-	print("available_times: " + str(available_times.size()))
-	current_time = available_times[0]
-	clock_value.text = str("%2.2f" % current_time)
-	clocks = create_clocks()
+	start_clocks()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
+
+func start_clocks():
+	available_times = shuffleList(available_hours)
+	var clock_value = get_tree().get_nodes_in_group("clock-value")[0]
+	current_time = available_times[0]
+	clock_value.text = str("%2.2f" % current_time)
+	clocks = create_clocks()	
 
 func rand_minute():
 	var random_minute_idx = rng.randi_range(0, available_minutes.size()-1)
@@ -59,6 +59,7 @@ func kill_clock(clock):
 	if clock.time == current_time:
 		self.score += 10
 		clocks.queue_free()
+		start_clocks()
 	else:
 		self.score -= 5
 		
