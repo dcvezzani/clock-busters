@@ -5,7 +5,7 @@
 [ext_resource path="res://scenes/clockHands.tscn" type="PackedScene" id=3]
 
 [sub_resource type="CircleShape2D" id=1]
-radius = 44.6167
+radius = 41.9506
 
 [node name="clock" type="Area2D"]
 script = ExtResource( 1 )
