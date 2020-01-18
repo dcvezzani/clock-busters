@@ -14,14 +14,26 @@ var clocks = null
 var active_clock_instance_cnt = 0
 
 var max_times = 10
-var clock_formation = "res://scenes/clocks-formation-01.tscn"
+var clock_formations = [
+  "res://scenes/clocks-formation-01.tscn",
+  "res://scenes/clocks-formation-01.tscn",
+  "res://scenes/clocks-formation-01.tscn",
+  "res://scenes/clocks-formation-01.tscn",
+  "res://scenes/clocks-formation-01.tscn",
+  "res://scenes/clocks-formation-01.tscn",
+  "res://scenes/clocks-formation-01.tscn",
+  "res://scenes/clocks-formation-01.tscn",
+  "res://scenes/clocks-formation-01.tscn",
+  "res://scenes/clocks-formation-01.tscn"
+]
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	rng.randomize()	
 	var score = get_tree().get_nodes_in_group("score")[0]
 	score.text = str(self.score)
-	start_clocks()
+	create_clocks()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
@@ -35,13 +47,15 @@ func shuffleList(list):
         shuffledList.append(list[indexList[x]] + rand_minute())
         indexList.remove(x)
     return shuffledList
-func start_clocks():
+	
+func create_clocks():
 	if clocks:
-		clocks.queue_free()
+		delete_clocks()
+		
 	active_clock_instance_cnt = 0
 	available_times = shuffleList(available_hours)
 	# current_time = available_times[0]
-	var results = create_clocks()
+	var results = render_clocks()
 	clocks = results.clocks
 	update_current_time(results.current_time)
 
@@ -61,15 +75,31 @@ func rand_minute():
 	var random_minute_idx = rng.randi_range(0, available_minutes.size()-1)
 	return available_minutes[random_minute_idx]
 
-func create_clocks():
+func get_clock_formation_clocks(clocks):
+	return clocks.get_children()
+	# return get_tree().get_nodes_in_group("clock")
+
+func delete_clocks():
+	if clocks:
+		clocks.queue_free()
+
+func init_clocks(clocks):
+	var viewportHeight = get_viewport().get_visible_rect().size.y	
+	clocks.position = Vector2(0,(-1) * viewportHeight)
+
+func render_clocks():
 	var viewportHeight = get_viewport().get_visible_rect().size.y
 	var viewportWidth = get_viewport().get_visible_rect().size.x
+	
+	var random_clock_formation_idx = rng.randi_range(0, clock_formations.size()-1)	
+	var clock_formation = clock_formations[random_clock_formation_idx]
 		
 	var scene = load(clock_formation)
 	var clocks = scene.instance()
-#      scene_instance.set_name("scene")
-	clocks.position = Vector2(0,(-1) * viewportHeight)
-	var clock_instances = clocks.get_children()
+	
+	init_clocks(clocks)
+	
+	var clock_instances = get_clock_formation_clocks(clocks)
 	var random_clock_idx = rng.randi_range(0, max_times-1)
 	var cnt = 0
 	var target_time = null
@@ -89,14 +119,14 @@ func die_clock(clock):
 	# print("die_clock: " + str(active_clock_instance_cnt))
 	if active_clock_instance_cnt <= 0:
 		update_score(-15)
-		start_clocks()
+		create_clocks()
 	clock.queue_free()	
 	
 func kill_clock(clock):
 	if clock.time == current_time:
 		active_clock_instance_cnt -= 1		
 		update_score(10)
-		start_clocks()
+		create_clocks()
 	else:
 		update_score(-5)
 
