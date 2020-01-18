@@ -23,4 +23,5 @@ func _process(delta):
 	_position_y += 10*wiggleAmount*sin(animate)
 	_position_y *= 0.8
 	position.y = _position_y + startY
+
 	
