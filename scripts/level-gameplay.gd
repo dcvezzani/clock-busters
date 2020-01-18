@@ -16,17 +16,16 @@ var active_clock_instance_cnt = 0
 var max_times = 10
 var clock_formations = [
   "res://scenes/clocks-formation-01.tscn",
-  "res://scenes/clocks-formation-01.tscn",
-  "res://scenes/clocks-formation-01.tscn",
-  "res://scenes/clocks-formation-01.tscn",
-  "res://scenes/clocks-formation-01.tscn",
-  "res://scenes/clocks-formation-01.tscn",
-  "res://scenes/clocks-formation-01.tscn",
-  "res://scenes/clocks-formation-01.tscn",
-  "res://scenes/clocks-formation-01.tscn",
-  "res://scenes/clocks-formation-01.tscn"
+  "res://scenes/clocks-formation-02.tscn",
+  "res://scenes/clocks-formation-03.tscn",
+  "res://scenes/clocks-formation-04.tscn",
+  "res://scenes/clocks-formation-05.tscn",
+  "res://scenes/clocks-formation-06.tscn",
+  "res://scenes/clocks-formation-07.tscn",
+  "res://scenes/clocks-formation-08.tscn",
+  "res://scenes/clocks-formation-09.tscn",
+  "res://scenes/clocks-formation-10.tscn"
 ]
-
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -76,8 +75,10 @@ func rand_minute():
 	return available_minutes[random_minute_idx]
 
 func get_clock_formation_clocks(clocks):
-	return clocks.get_children()
-	# return get_tree().get_nodes_in_group("clock")
+	# return clocks.get_children()
+	var _clocks = get_tree().get_nodes_in_group("clock")
+	print_debug(_clocks)
+	return _clocks
 
 func delete_clocks():
 	if clocks:
@@ -97,7 +98,9 @@ func render_clocks():
 	var scene = load(clock_formation)
 	var clocks = scene.instance()
 	
-	init_clocks(clocks)
+	# init_clocks(clocks)
+	
+	self.add_child(clocks)
 	
 	var clock_instances = get_clock_formation_clocks(clocks)
 	var random_clock_idx = rng.randi_range(0, max_times-1)
@@ -111,7 +114,7 @@ func render_clocks():
 		cnt += 1
 		active_clock_instance_cnt += 1
 		
-	self.add_child(clocks)
+
 	return {"clocks": clocks, "current_time": target_time}
 	
 func die_clock(clock):	
