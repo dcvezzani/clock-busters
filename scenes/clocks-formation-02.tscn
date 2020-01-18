@@ -5,19 +5,19 @@
 [node name="Node2D" type="Node2D"]
 
 [node name="ragdoll_test" parent="." instance=ExtResource( 1 )]
-position = Vector2( 321.579, 250.36 )
+position = Vector2( 310.076, 384.91 )
 
 [node name="ragdoll_test2" parent="." instance=ExtResource( 1 )]
-position = Vector2( 261.748, 353.872 )
+position = Vector2( 264.763, 286.835 )
 
 [node name="ragdoll_test3" parent="." instance=ExtResource( 1 )]
-position = Vector2( 120.549, 349.8 )
+position = Vector2( 104.841, 385.738 )
 
 [node name="ragdoll_test4" parent="." instance=ExtResource( 1 )]
-position = Vector2( 190.71, 449.281 )
+position = Vector2( 216.494, 384.465 )
 
 [node name="ragdoll_test5" parent="." instance=ExtResource( 1 )]
-position = Vector2( 51.5505, 253.048 )
+position = Vector2( 51.5505, 283.195 )
 
 [node name="ragdoll_test6" parent="." instance=ExtResource( 1 )]
-position = Vector2( 194.267, 248.452 )
+position = Vector2( 160.947, 283.676 )
