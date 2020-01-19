@@ -15,10 +15,11 @@
 [ext_resource path="res://sprites/woodenPillar.png" type="Texture" id=13]
 
 [node name="level-background" type="Node2D"]
-position = Vector2( 179, 294 )
-scale = Vector2( 0.25, 0.25 )
+position = Vector2( 188, 290 )
+scale = Vector2( 0.2, 0.2 )
 
 [node name="archColoring" type="Sprite" parent="."]
+modulate = Color( 0, 0, 0, 1 )
 position = Vector2( -15.6236, 362.651 )
 scale = Vector2( 14.2561, 11.0574 )
 texture = ExtResource( 1 )
@@ -27,7 +28,8 @@ __meta__ = {
 }
 
 [node name="spr_bgWindow" type="Sprite" parent="."]
-position = Vector2( -5.16669, 19.9619 )
+modulate = Color( 0.956863, 0.819608, 0.643137, 1 )
+position = Vector2( 5.62555, 9.16966 )
 texture = ExtResource( 2 )
 
 [node name="spr_gear1" type="Sprite" parent="."]
@@ -43,7 +45,7 @@ texture = ExtResource( 5 )
 script = ExtResource( 6 )
 
 [node name="spr_gear3" type="Sprite" parent="."]
-position = Vector2( -491.354, -623.755 )
+position = Vector2( -456.192, -560.464 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 7 )
 script = ExtResource( 8 )
@@ -61,11 +63,55 @@ texture = ExtResource( 11 )
 script = ExtResource( 12 )
 
 [node name="woodenPillar" type="Sprite" parent="."]
-position = Vector2( -592.077, 174.725 )
-scale = Vector2( 1, 2.70741 )
+position = Vector2( -1000.09, -274.936 )
+scale = Vector2( 2.77863, 3.36751 )
 texture = ExtResource( 13 )
 
 [node name="woodenPillar2" type="Sprite" parent="."]
-position = Vector2( 597.24, 149.287 )
+position = Vector2( 939.779, -354.997 )
+scale = Vector2( 2.77863, 3.29635 )
+texture = ExtResource( 13 )
+
+[node name="woodenPillar3" type="Sprite" parent="."]
+position = Vector2( 41.6846, -845.329 )
+rotation = 1.5708
 scale = Vector2( 1, 2.70226 )
 texture = ExtResource( 13 )
+
+[node name="woodenPillar5" type="Sprite" parent="."]
+position = Vector2( 41.6846, 1226.44 )
+rotation = 1.5708
+scale = Vector2( 1, 2.70226 )
+texture = ExtResource( 13 )
+
+[node name="woodenPillar4" type="Sprite" parent="."]
+position = Vector2( 41.6846, -1152.44 )
+rotation = 1.5708
+scale = Vector2( 1.69434, 2.70226 )
+texture = ExtResource( 13 )
+
+[node name="woodenPillar7" type="Sprite" parent="."]
+position = Vector2( 41.6846, -1441.83 )
+rotation = 1.5708
+scale = Vector2( 3.14082, 2.70226 )
+texture = ExtResource( 13 )
+
+[node name="woodenPillar8" type="Sprite" parent="."]
+position = Vector2( 74.0615, 1888.39 )
+rotation = 1.5708
+scale = Vector2( 4.25494, 2.70226 )
+texture = ExtResource( 13 )
+
+[node name="woodenPillar6" type="Sprite" parent="."]
+position = Vector2( 52.4768, 1545.32 )
+rotation = 1.5708
+scale = Vector2( 1.75987, 2.70226 )
+texture = ExtResource( 13 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_left = -1728.92
+margin_top = -1799.58
+margin_right = 1502.08
+margin_bottom = 2165.42
+mouse_filter = 2
+color = Color( 0.65098, 0.345098, 0.113725, 0.117647 )
