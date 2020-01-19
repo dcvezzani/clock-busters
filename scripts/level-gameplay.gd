@@ -11,9 +11,8 @@ var available_minutes = [0.0, 0.25, 0.5, 0.75]
 var score = 0
 var rng = RandomNumberGenerator.new()
 var clocks = null
-var active_clock_instance_cnt = 0
+var max_times = 6
 
-var max_times = 10
 var clock_formations = [
   "res://scenes/clocks-formation-01.tscn",
   "res://scenes/clocks-formation-02.tscn",
@@ -33,6 +32,9 @@ func _ready():
 	var score = get_tree().get_nodes_in_group("score")[0]
 	score.text = str(self.score)
 	create_clocks()
+	
+func _on_clock_clicked(clock):
+	kill_clock(clock)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
@@ -51,7 +53,6 @@ func create_clocks():
 	if clocks:
 		delete_clocks()
 		
-	active_clock_instance_cnt = 0
 	available_times = shuffleList(available_hours)
 	# current_time = available_times[0]
 	var results = render_clocks()
@@ -67,7 +68,6 @@ func format_time(time):
 func update_current_time(time):
 	current_time = time
 	var clock_value = get_tree().get_nodes_in_group("clock-value")[0]
-	#clock_value.text = str("%2.2f" % time)
 	clock_value.text = format_time(time)
 	
 func rand_minute():
@@ -75,14 +75,17 @@ func rand_minute():
 	return available_minutes[random_minute_idx]
 
 func get_clock_formation_clocks(clocks):
-	# return clocks.get_children()
 	var _clocks = get_tree().get_nodes_in_group("clock")
-	print_debug(_clocks)
 	return _clocks
 
 func delete_clocks():
 	if clocks:
+		var clock_instances = get_clock_formation_clocks(clocks)
+		for clock in clock_instances:
+			clock.disconnect("clock_clicked", self, "_on_clock_clicked")
+			clock.remove_from_group("clock")
 		clocks.queue_free()
+		clocks = null
 
 func init_clocks(clocks):
 	var viewportHeight = get_viewport().get_visible_rect().size.y	
@@ -107,27 +110,20 @@ func render_clocks():
 	var cnt = 0
 	var target_time = null
 	for clock in clock_instances:
-		var next_time = available_times.pop_front()
-		clock.set_time(next_time)
-		if cnt == random_clock_idx:
-			target_time = next_time
+		if (cnt < max_times):
+			clock.connect("clock_clicked", self, "_on_clock_clicked")
+			var next_time = available_times.pop_front()
+			# print_debug(">>>cnt: ", [cnt, next_time, available_times.size()])
+			clock.set_time(next_time)
+			if cnt == random_clock_idx:
+				target_time = next_time
 		cnt += 1
-		active_clock_instance_cnt += 1
 		
-
 	return {"clocks": clocks, "current_time": target_time}
 	
-func die_clock(clock):	
-	active_clock_instance_cnt -= 1
-	# print("die_clock: " + str(active_clock_instance_cnt))
-	if active_clock_instance_cnt <= 0:
-		update_score(-15)
-		create_clocks()
-	clock.queue_free()	
-	
 func kill_clock(clock):
+	# print_debug(">>>clock.time: ", clock.time)
 	if clock.time == current_time:
-		active_clock_instance_cnt -= 1		
 		update_score(10)
 		create_clocks()
 	else:
@@ -137,3 +133,4 @@ func update_score(amt):
 	var score = get_tree().get_nodes_in_group("score")[0]
 	self.score += amt
 	score.text = str(self.score)
+

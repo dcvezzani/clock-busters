@@ -1,5 +1,7 @@
 extends Area2D
 
+signal clock_clicked
+
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
@@ -22,11 +24,15 @@ func _process(delta):
 
 func _on_clock_input_event(viewport, event, shape_idx):
 	if event is InputEventMouseButton:
+		# print_debug(">>>clicked: ", self.time)
 		if event.button_index == BUTTON_LEFT && event.pressed:
 			# print("mouse button click detected")
-			get_parent().get_parent().kill_clock(self)
+			# get_parent().get_parent().kill_clock(self)
+			emit_signal("clock_clicked", self)
+
 
 func set_time(time):
+	# print_debug(">>>setting time: ", time, ", ", $clockHands)
 	self.time = time
 	$time.text = str(time)
 	$clockHands.updateHands(time * 1.0)
