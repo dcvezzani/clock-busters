@@ -4,11 +4,15 @@ extends Node2D
 # var a = 2
 # var b = "text"
 
+signal game_over
+
 var current_time = null
 var available_times = []
 var available_hours = [1,2,3,4,5,6,7,8,9,10,11,12]
 var available_minutes = [0.0, 0.25, 0.5, 0.75]
 var score = 0
+var countDownMax = 5
+var countDown = countDown
 var rng = RandomNumberGenerator.new()
 var clocks = null
 var max_times = 6
@@ -37,8 +41,25 @@ func _on_clock_clicked(clock):
 	kill_clock(clock)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+func _process(delta):
+	var value = self.countDown - delta
+	if value > 0:
+		if value < 0:
+			value = 0
+		update_count_down(value)
+	else:
+		update_count_down(0)
+		print(">>>emitting game over")
+		# update_score(-15)
+		# self.create_clocks()
+		emit_signal("game_over")
+		# queue_free()
+		# goto_welcome_page()
+
+func goto_welcome_page():
+	var welcome = load("res://scenes/welcome.tscn").instance()
+	get_tree().get_root().add_child(welcome)
+	hide()
 
 func shuffleList(list):
     var shuffledList = [] 
@@ -53,6 +74,7 @@ func create_clocks():
 	if clocks:
 		delete_clocks()
 		
+	reset_count_down()
 	available_times = shuffleList(available_hours)
 	# current_time = available_times[0]
 	var results = render_clocks()
@@ -134,3 +156,10 @@ func update_score(amt):
 	self.score += amt
 	score.text = str(self.score)
 
+func reset_count_down():
+	self.countDown = self.countDownMax
+
+func update_count_down(value):
+	var countDown = get_tree().get_nodes_in_group("clock-countdown")[0]
+	self.countDown = value
+	countDown.text = str(ceil(self.countDown))

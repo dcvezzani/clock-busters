@@ -15,6 +15,7 @@
 [ext_resource path="res://sprites/woodenPillar.png" type="Texture" id=13]
 
 [node name="level-background" type="Node2D"]
+editor/display_folded = true
 position = Vector2( 188, 290 )
 scale = Vector2( 0.2, 0.2 )
 
