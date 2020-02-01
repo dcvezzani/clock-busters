@@ -1,7 +1,11 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=9 format=2]
 
-[ext_resource path="res://scenes/welcome.gd" type="Script" id=1]
-[ext_resource path="res://scenes/Acme-Regular.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://scripts/welcome.gd" type="Script" id=1]
+[ext_resource path="res://Acme-Regular.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://sounds/Clock Busters Music.ogg" type="AudioStream" id=3]
+[ext_resource path="res://sounds/Click.ogg" type="AudioStream" id=4]
+[ext_resource path="res://sounds/correct.wav" type="AudioStream" id=5]
+[ext_resource path="res://sounds/incorrect.wav" type="AudioStream" id=6]
 
 [sub_resource type="DynamicFont" id=1]
 size = 48
@@ -33,4 +37,26 @@ margin_right = 285.0
 margin_bottom = 375.0
 custom_fonts/font = SubResource( 2 )
 text = "Start"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+autoplay = true
+
+[node name="Click" type="AudioStreamPlayer" parent="." groups=[
+"Click",
+]]
+stream = ExtResource( 4 )
+volume_db = 2.0
+
+[node name="Correct" type="AudioStreamPlayer" parent="." groups=[
+"Correct",
+]]
+stream = ExtResource( 5 )
+volume_db = -8.078
+
+[node name="Incorrect" type="AudioStreamPlayer" parent="." groups=[
+"Incorrect",
+]]
+stream = ExtResource( 6 )
+volume_db = -5.049
 [connection signal="pressed" from="welcome-ui/Button" to="." method="_on_Button_pressed"]

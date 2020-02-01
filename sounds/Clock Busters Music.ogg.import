@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Clock Busters Music.ogg-13b030be763253ab5f7558dd8dc65a16.oggstr"
+
+[deps]
+
+source_file="res://sounds/Clock Busters Music.ogg"
+dest_files=[ "res://.import/Clock Busters Music.ogg-13b030be763253ab5f7558dd8dc65a16.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

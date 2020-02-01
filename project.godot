@@ -16,8 +16,12 @@ _global_script_class_icons={
 [application]
 
 config/name="clock-busters"
-run/main_scene="res://scenes/level.tscn"
+run/main_scene="res://scenes/welcome.tscn"
 config/icon="res://sprites/icon.png"
+
+[autoload]
+
+global="*res://scripts/global.gd"
 
 [display]
 

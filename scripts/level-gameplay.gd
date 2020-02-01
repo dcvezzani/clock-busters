@@ -6,18 +6,24 @@ extends Node2D
 
 signal game_over
 
+# export (String,FILE) var clockFormation1 = null
+
 var current_time = null
 var available_times = []
 var available_hours = [1,2,3,4,5,6,7,8,9,10,11,12]
 var available_minutes = [0.0, 0.25, 0.5, 0.75]
 var score = 0
-var countDownMax = 5
-var countDown = countDown
+export(int) var countDownMax = 5
+onready var countDown = countDownMax
 var rng = RandomNumberGenerator.new()
 var clocks = null
 var max_times = 6
 
-var clock_formations = [
+onready var correctSound = get_tree().get_nodes_in_group("Correct")[0]
+onready var incorrectSound = get_tree().get_nodes_in_group("Incorrect")[0]
+
+
+onready var clock_formations = [
   "res://scenes/clocks-formation-01.tscn",
   "res://scenes/clocks-formation-02.tscn",
   "res://scenes/clocks-formation-03.tscn",
@@ -74,7 +80,7 @@ func create_clocks():
 	if clocks:
 		delete_clocks()
 		
-	reset_count_down()
+	# reset_count_down()
 	available_times = shuffleList(available_hours)
 	# current_time = available_times[0]
 	var results = render_clocks()
@@ -144,12 +150,20 @@ func render_clocks():
 	return {"clocks": clocks, "current_time": target_time}
 	
 func kill_clock(clock):
-	# print_debug(">>>clock.time: ", clock.time)
+	# Clock is correct
 	if clock.time == current_time:
 		update_score(10)
-		create_clocks()
+		correctSound.play()
+		clocks.withdraw(self)
+		
+		
+	# Clock is incorrect.
 	else:
 		update_score(-5)
+		incorrectSound.play()
+
+func on_clocks_withdrawn():
+	create_clocks()
 
 func update_score(amt):
 	var score = get_tree().get_nodes_in_group("score")[0]
