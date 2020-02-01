@@ -11,7 +11,7 @@ var available_times = []
 var available_hours = [1,2,3,4,5,6,7,8,9,10,11,12]
 var available_minutes = [0.0, 0.25, 0.5, 0.75]
 var score = 0
-var countDownMax = 5
+var countDownMax = 90
 var countDown = countDown
 var rng = RandomNumberGenerator.new()
 var clocks = null
@@ -147,9 +147,12 @@ func kill_clock(clock):
 	# print_debug(">>>clock.time: ", clock.time)
 	if clock.time == current_time:
 		update_score(10)
-		create_clocks()
+		clocks.withdraw(self)
 	else:
 		update_score(-5)
+
+func on_clocks_withdrawn():
+	create_clocks()
 
 func update_score(amt):
 	var score = get_tree().get_nodes_in_group("score")[0]

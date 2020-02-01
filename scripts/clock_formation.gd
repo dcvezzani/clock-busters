@@ -14,4 +14,5 @@ func withdraw():
 	isWithdrawing = true
 	
 func _process(delta):
-	position.y-= withdrawSpeed
+	if (isWithdrawing):
+		position.y-= withdrawSpeed
