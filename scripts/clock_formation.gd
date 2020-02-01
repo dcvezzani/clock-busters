@@ -3,7 +3,7 @@ extends Node2D
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
-export var withdrawSpeed = 10
+export var withdrawSpeed = 20
 var isWithdrawing = false
 var withdrawAmount = 500
 var clockController = null

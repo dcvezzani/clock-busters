@@ -6,18 +6,20 @@ extends Node2D
 
 signal game_over
 
+# export (String,FILE) var clockFormation1 = null
+
 var current_time = null
 var available_times = []
 var available_hours = [1,2,3,4,5,6,7,8,9,10,11,12]
 var available_minutes = [0.0, 0.25, 0.5, 0.75]
 var score = 0
 var countDownMax = 90
-var countDown = countDown
+var countDown = countDownMax
 var rng = RandomNumberGenerator.new()
 var clocks = null
 var max_times = 6
 
-var clock_formations = [
+onready var clock_formations = [
   "res://scenes/clocks-formation-01.tscn",
   "res://scenes/clocks-formation-02.tscn",
   "res://scenes/clocks-formation-03.tscn",
@@ -74,7 +76,7 @@ func create_clocks():
 	if clocks:
 		delete_clocks()
 		
-	reset_count_down()
+	# reset_count_down()
 	available_times = shuffleList(available_hours)
 	# current_time = available_times[0]
 	var results = render_clocks()

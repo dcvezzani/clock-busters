@@ -26,14 +26,9 @@ func _on_Button_pressed():
 
 func _on_welcome_game_over():
 	print(">>>the game is over")
-	
 	var levelGameplay = get_tree().get_nodes_in_group("level-gameplay")[0]
 	levelGameplay.disconnect("game_over", self, "_on_welcome_game_over")	
 	get_tree().get_root().remove_child(self.game)
-	#print("child count " + str(get_tree().get_root().get_child_count()))
-	#for child in get_tree().get_root().get_children():
-	#	get_tree().get_root().remove_child(child)
-	#self.game.hide()
 	self.game.queue_free()
 	loadGame()
 	show()
