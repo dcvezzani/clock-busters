@@ -21,4 +21,3 @@ func _process(delta):
 		position.y-= withdrawSpeed
 		if position.y < - withdrawAmount:
 			clockController.on_clocks_withdrawn()
-		
