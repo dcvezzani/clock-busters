@@ -36,20 +36,28 @@ func _on_show_score_game_over():
 
 func _on_show_welcome_game_over():
 	self.remove_score()
+	#self.add_game()
+	#self.loadScore()	
+	show()
+
+func _on_start_new_game_game_over():
+	self.remove_score()
 	self.add_game()
 	self.loadScore()	
-	show()
+	hide()
 
 func add_score():
 	get_tree().get_root().add_child(self.game_over_score)
 	var gameOverScore = get_tree().get_nodes_in_group("game-over-score")[0]
 	gameOverScore.connect("goto_welcome", self, "_on_show_welcome_game_over")
+	gameOverScore.connect("start_new_game", self, "_on_start_new_game_game_over")	
 	#signal goto_welcome
 	#signal start_new_game	
 
 func remove_score():
-	var levelGameplay = get_tree().get_nodes_in_group("game-over-score")[0]
-	levelGameplay.disconnect("goto_welcome", self, "_on_show_welcome_game_over")	
+	var gameOverScore = get_tree().get_nodes_in_group("game-over-score")[0]
+	gameOverScore.disconnect("goto_welcome", self, "_on_show_welcome_game_over")	
+	gameOverScore.disconnect("start_new_game", self, "_on_start_new_game_game_over")		
 	get_tree().get_root().remove_child(self.game_over_score)
 	self.game_over_score.queue_free()
 	
