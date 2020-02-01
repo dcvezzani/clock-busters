@@ -14,10 +14,13 @@
 [ext_resource path="res://scenes/rotate_clockwise_12.gd" type="Script" id=12]
 [ext_resource path="res://sprites/woodenPillar.png" type="Texture" id=13]
 
-[node name="level-background" type="Node2D"]
+[node name="level-background" type="Control"]
 editor/display_folded = true
-position = Vector2( 188, 290 )
-scale = Vector2( 0.2, 0.2 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+rect_scale = Vector2( 0.2, 0.2 )
 
 [node name="archColoring" type="Sprite" parent="."]
 modulate = Color( 0, 0, 0, 1 )
@@ -64,7 +67,7 @@ texture = ExtResource( 11 )
 script = ExtResource( 12 )
 
 [node name="woodenPillar" type="Sprite" parent="."]
-position = Vector2( -1000.09, -274.936 )
+position = Vector2( -861.625, -274.936 )
 scale = Vector2( 2.77863, 3.36751 )
 texture = ExtResource( 13 )
 
