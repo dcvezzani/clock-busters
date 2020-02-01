@@ -56,8 +56,6 @@ texture = ExtResource( 2 )
 offset = Vector2( 0, 152.13 )
 script = ExtResource( 3 )
 
-[node name="clock" parent="Sprite/Sprite/Sprite3/Sprite/Sprite2/Sprite3/Sprite4/Sprite5" groups=[
-"clock",
-] instance=ExtResource( 4 )]
+[node name="clock" parent="Sprite/Sprite/Sprite3/Sprite/Sprite2/Sprite3/Sprite4/Sprite5" instance=ExtResource( 4 )]
 position = Vector2( -7.54637, 310.912 )
 scale = Vector2( 2.5, 2.5 )

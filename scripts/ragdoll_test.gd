@@ -24,4 +24,5 @@ func _process(delta):
 	_position_y *= 0.8
 	position.y = _position_y + startY
 
+
 	
