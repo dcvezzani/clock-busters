@@ -1,10 +1,30 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://scenes/level-background.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/level-gameplay.tscn" type="PackedScene" id=2]
 [ext_resource path="res://mainFont.tres" type="DynamicFont" id=3]
 [ext_resource path="res://sprites/hourglass.png" type="Texture" id=4]
 [ext_resource path="res://sprites/roundRect.png" type="Texture" id=5]
+
+[sub_resource type="GDScript" id=1]
+script/source = "extends Label
+
+
+# Declare member variables here. Examples:
+# var a = 2
+# var b = \"text\"
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	set_text(str(scores.highscore))
+	scores.connect(\"update_highscore\", self, \"_on_update_highscore\")	
+	pass # Replace with function body.
+
+func _on_update_highscore():
+	set_text(str(scores.highscore))
+	pass
+"
 
 [node name="level" type="Control"]
 anchor_right = 1.0
@@ -26,6 +46,7 @@ mouse_filter = 2
 [node name="level-gameplay" parent="level-gameplay-centered" groups=[
 "level-gameplay",
 ] instance=ExtResource( 2 )]
+countDownMax = 10
 
 [node name="level-ui" type="Control" parent="."]
 anchor_right = 1.0
@@ -36,6 +57,9 @@ mouse_filter = 2
 anchor_right = 1.0
 margin_bottom = 60.0
 mouse_filter = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="score" type="Label" parent="level-ui/header" groups=[
 "score",
@@ -46,6 +70,20 @@ margin_right = 138.726
 margin_bottom = 63.8457
 custom_fonts/font = ExtResource( 3 )
 text = "10000"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="highscore" type="Label" parent="level-ui/header" groups=[
+"highscore",
+]]
+margin_left = 12.5
+margin_top = 15.0
+margin_right = 52.5
+margin_bottom = 29.0
+rect_scale = Vector2( 2.5, 2.5 )
+text = "10000"
+script = SubResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }

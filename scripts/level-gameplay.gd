@@ -168,6 +168,12 @@ func on_clocks_withdrawn():
 func update_score(amt):
 	var score = get_tree().get_nodes_in_group("score")[0]
 	self.score += amt
+	print("self.score: " + str(self.score))
+	print("scores.highscore: " + str(scores.highscore))
+	if (self.score > scores.highscore):
+		print(">>>trace 1")
+		scores.highscore = self.score
+		
 	score.text = str(self.score)
 
 func reset_count_down():
