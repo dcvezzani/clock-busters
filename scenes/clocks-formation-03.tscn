@@ -3,24 +3,23 @@
 [ext_resource path="res://scripts/clock_formation.gd" type="Script" id=1]
 [ext_resource path="res://scenes/ragdoll_test.tscn" type="PackedScene" id=2]
 
-
 [node name="formation" type="Node2D"]
 script = ExtResource( 1 )
 
 [node name="ragdoll_test" parent="." instance=ExtResource( 2 )]
-position = Vector2( 55.3762, 108.625 )
+position = Vector2( 97.1309, 142.249 )
 
 [node name="ragdoll_test2" parent="." instance=ExtResource( 2 )]
-position = Vector2( 48.9152, 1.9166 )
+position = Vector2( 40.5642, 47.2323 )
 
 [node name="ragdoll_test3" parent="." instance=ExtResource( 2 )]
-position = Vector2( -65.6788, 107.295 )
+position = Vector2( -20.5838, 142.59 )
 
 [node name="ragdoll_test4" parent="." instance=ExtResource( 2 )]
-position = Vector2( 48.1332, -114.142 )
+position = Vector2( 98.2388, -55.4648 )
 
 [node name="ragdoll_test5" parent="." instance=ExtResource( 2 )]
-position = Vector2( -65.0078, -14.6744 )
+position = Vector2( -73.3587, 45.673 )
 
 [node name="ragdoll_test6" parent="." instance=ExtResource( 2 )]
-position = Vector2( -61.3758, -113.483 )
+position = Vector2( -21.2913, -53.1356 )

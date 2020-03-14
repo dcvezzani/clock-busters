@@ -1,7 +1,9 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://scenes/game_over_score.gd" type="Script" id=1]
 [ext_resource path="res://Acme-Regular.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://particles/blue_firework.tscn" type="PackedScene" id=3]
+[ext_resource path="res://particles/red_firework.tscn" type="PackedScene" id=4]
 
 [sub_resource type="DynamicFont" id=1]
 size = 64
@@ -49,5 +51,20 @@ margin_right = -52.0
 margin_bottom = -228.0
 custom_fonts/font = SubResource( 2 )
 text = "Home"
+
+[node name="RedFirework" parent="." instance=ExtResource( 4 )]
+position = Vector2( 18.0001, 502.019 )
+
+[node name="BlueFirework" parent="." instance=ExtResource( 3 )]
+position = Vector2( 224.759, 529.284 )
+
+[node name="BlueFirework2" parent="." instance=ExtResource( 3 )]
+position = Vector2( 79.3462, 143.031 )
+
+[node name="RedFirework2" parent="." instance=ExtResource( 4 )]
+position = Vector2( 281.561, 174.84 )
+
+[node name="RedFirework3" parent="." instance=ExtResource( 4 )]
+position = Vector2( 149.781, 18.0668 )
 [connection signal="pressed" from="game_over-ui/play-again" to="." method="_on_playagain_pressed"]
 [connection signal="pressed" from="game_over-ui/goto-welcome" to="." method="_on_gotowelcome_pressed"]
