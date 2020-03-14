@@ -68,13 +68,13 @@ func goto_welcome_page():
 	hide()
 
 func shuffleList(list):
-    var shuffledList = [] 
-    var indexList = range(list.size())
-    for i in range(min(list.size(), max_times)):
-        var x = randi()%indexList.size()
-        shuffledList.append(list[indexList[x]] + rand_minute())
-        indexList.remove(x)
-    return shuffledList
+	var shuffledList = [] 
+	var indexList = range(list.size())
+	for i in range(min(list.size(), max_times)):
+		var x = randi()%indexList.size()
+		shuffledList.append(list[indexList[x]] + rand_minute())
+		indexList.remove(x)
+	return shuffledList
 	
 func create_clocks():
 	if clocks:
@@ -168,6 +168,12 @@ func on_clocks_withdrawn():
 func update_score(amt):
 	var score = get_tree().get_nodes_in_group("score")[0]
 	self.score += amt
+	print("self.score: " + str(self.score))
+	print("scores.highscore: " + str(scores.highscore))
+	if (self.score > scores.highscore):
+		print(">>>trace 1")
+		scores.highscore = self.score
+		
 	score.text = str(self.score)
 
 func reset_count_down():

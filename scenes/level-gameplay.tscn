@@ -4,4 +4,3 @@
 
 [node name="level-gameplay" type="Node2D"]
 script = ExtResource( 1 )
-countDownMax = 60
