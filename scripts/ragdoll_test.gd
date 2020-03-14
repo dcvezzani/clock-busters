@@ -12,11 +12,13 @@ var _position_x = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	visible = false
 	_position_y = -500
 	_position_x = position.x
 	startY = position.y-chainHeight*numChains*scale.y
 
 func _process(delta):
+	visible = true
 	animate += delta*7
 	wiggleAmount *= 0.98
 	position.x = _position_x + 20*wiggleAmount*sin(animate)

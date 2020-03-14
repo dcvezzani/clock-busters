@@ -5,21 +5,24 @@
 
 [node name="formation" type="Node2D"]
 script = ExtResource( 1 )
+__meta__ = {
+"_edit_vertical_guides_": [  ]
+}
 
 [node name="ragdoll_test" parent="." instance=ExtResource( 2 )]
-position = Vector2( 123.763, -71.091 )
+position = Vector2( 116.397, -1.10986 )
 
 [node name="ragdoll_test2" parent="." instance=ExtResource( 2 )]
-position = Vector2( 63.932, 32.421 )
+position = Vector2( 62.7043, 88.4714 )
 
 [node name="ragdoll_test3" parent="." instance=ExtResource( 2 )]
-position = Vector2( -77.267, 28.349 )
+position = Vector2( -63.5491, 86.0528 )
 
 [node name="ragdoll_test4" parent="." instance=ExtResource( 2 )]
-position = Vector2( -7.10596, 127.83 )
+position = Vector2( 1.4882, 170.588 )
 
 [node name="ragdoll_test5" parent="." instance=ExtResource( 2 )]
-position = Vector2( -146.265, -68.403 )
+position = Vector2( -114.426, -3.11998 )
 
 [node name="ragdoll_test6" parent="." instance=ExtResource( 2 )]
-position = Vector2( -3.54897, -72.999 )
+position = Vector2( 1.36198, -0.562355 )

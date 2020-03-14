@@ -68,13 +68,13 @@ func goto_welcome_page():
 	hide()
 
 func shuffleList(list):
-    var shuffledList = [] 
-    var indexList = range(list.size())
-    for i in range(min(list.size(), max_times)):
-        var x = randi()%indexList.size()
-        shuffledList.append(list[indexList[x]] + rand_minute())
-        indexList.remove(x)
-    return shuffledList
+	var shuffledList = [] 
+	var indexList = range(list.size())
+	for i in range(min(list.size(), max_times)):
+		var x = randi()%indexList.size()
+		shuffledList.append(list[indexList[x]] + rand_minute())
+		indexList.remove(x)
+	return shuffledList
 	
 func create_clocks():
 	if clocks:

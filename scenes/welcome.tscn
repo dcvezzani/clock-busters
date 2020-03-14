@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://scripts/welcome.gd" type="Script" id=1]
 [ext_resource path="res://Acme-Regular.ttf" type="DynamicFontData" id=2]
@@ -6,37 +6,72 @@
 [ext_resource path="res://sounds/Click.ogg" type="AudioStream" id=4]
 [ext_resource path="res://sounds/correct.wav" type="AudioStream" id=5]
 [ext_resource path="res://sounds/incorrect.wav" type="AudioStream" id=6]
+[ext_resource path="res://sprites/clockFace.png" type="Texture" id=7]
+[ext_resource path="res://sprites/hourHand.png" type="Texture" id=8]
+[ext_resource path="res://sprites/minuteHand.png" type="Texture" id=9]
+[ext_resource path="res://scenes/minuteHand.gd" type="Script" id=10]
+[ext_resource path="res://scenes/hourHand.gd" type="Script" id=11]
+[ext_resource path="res://mainFont.tres" type="DynamicFont" id=12]
 
 [sub_resource type="DynamicFont" id=1]
-size = 48
-font_data = ExtResource( 2 )
-
-[sub_resource type="DynamicFont" id=2]
 size = 32
 font_data = ExtResource( 2 )
 
-[node name="welcome" type="Node2D"]
+[node name="welcome" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
 script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="clockFace" type="Sprite" parent="."]
+position = Vector2( 188.226, 321.025 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 7 )
+
+[node name="minuteHand" type="Sprite" parent="clockFace"]
+texture = ExtResource( 9 )
+offset = Vector2( 67.461, 0 )
+script = ExtResource( 10 )
+
+[node name="hourHand" type="Sprite" parent="clockFace"]
+texture = ExtResource( 8 )
+offset = Vector2( 43.242, 0 )
+script = ExtResource( 11 )
 
 [node name="welcome-ui" type="Control" parent="."]
-margin_right = 360.0
-margin_bottom = 640.0
+anchor_right = 1.0
+anchor_bottom = 1.0
 
 [node name="Label" type="Label" parent="welcome-ui"]
 anchor_right = 1.0
-margin_top = 109.0
-margin_bottom = 183.0
-custom_fonts/font = SubResource( 1 )
+margin_left = 5.27411
+margin_top = 123.324
+margin_right = 5.27411
+margin_bottom = 250.324
+custom_fonts/font = ExtResource( 12 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 text = "Clock Busters!!"
 align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Button" type="Button" parent="welcome-ui"]
-margin_left = 83.0
-margin_top = 327.0
-margin_right = 285.0
-margin_bottom = 375.0
-custom_fonts/font = SubResource( 2 )
-text = "Start"
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -42.9676
+margin_top = 150.785
+margin_right = 57.0324
+margin_bottom = 198.785
+custom_fonts/font = SubResource( 1 )
+text = "Play"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 3 )
