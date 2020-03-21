@@ -60,12 +60,6 @@ func _process(delta):
 		# self.create_clocks()
 		emit_signal("game_over")
 		# queue_free()
-		# goto_welcome_page()
-
-func goto_welcome_page():
-	var welcome = load("res://scenes/welcome.tscn").instance()
-	get_tree().get_root().add_child(welcome)
-	hide()
 
 func shuffleList(list):
 	var shuffledList = [] 
