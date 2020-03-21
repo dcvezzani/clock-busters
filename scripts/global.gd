@@ -14,6 +14,8 @@ var scenes = {
 func _ready():
 	self.scenes.game = preload("res://scenes/level.tscn").instance()
 	self.scenes.welcome = preload("res://scenes/welcome.tscn").instance()
+	self.scenes.leaderBoard = preload("res://scenes/leader-board.tscn").instance()
+	
 	# self.scenes.game_over = preload("res://scenes/game_over.tscn").instance()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

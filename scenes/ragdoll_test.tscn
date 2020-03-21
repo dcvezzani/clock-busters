@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://scripts/ragdoll_test.gd" type="Script" id=1]
 [ext_resource path="res://sprites/chain.png" type="Texture" id=2]
 [ext_resource path="res://scripts/Sprite.gd" type="Script" id=3]
 [ext_resource path="res://scenes/clock.tscn" type="PackedScene" id=4]
+[ext_resource path="res://sounds/Chains.ogg" type="AudioStream" id=5]
 
 [node name="ragdoll_test" type="Node2D"]
 scale = Vector2( 0.25, 0.25 )
@@ -59,3 +60,10 @@ script = ExtResource( 3 )
 [node name="clock" parent="Sprite/Sprite/Sprite3/Sprite/Sprite2/Sprite3/Sprite4/Sprite5" instance=ExtResource( 4 )]
 position = Vector2( -7.54637, 310.912 )
 scale = Vector2( 2.5, 2.5 )
+
+[node name="ChainRattle" type="AudioStreamPlayer" parent="." groups=[
+"Incorrect",
+]]
+stream = ExtResource( 5 )
+volume_db = -5.049
+autoplay = true
