@@ -24,16 +24,16 @@ onready var incorrectSound = get_tree().get_nodes_in_group("Incorrect")[0]
 
 
 onready var clock_formations = [
-  "res://scenes/clocks-formation-01.tscn",
-  "res://scenes/clocks-formation-02.tscn",
-  "res://scenes/clocks-formation-03.tscn",
-  "res://scenes/clocks-formation-04.tscn",
-  "res://scenes/clocks-formation-05.tscn",
-  "res://scenes/clocks-formation-06.tscn",
-  "res://scenes/clocks-formation-07.tscn",
-  "res://scenes/clocks-formation-08.tscn",
-  "res://scenes/clocks-formation-09.tscn",
-  "res://scenes/clocks-formation-10.tscn"
+  "res://scenes/clocks-formations/clocks-formation-01.tscn",
+  "res://scenes/clocks-formations/clocks-formation-02.tscn",
+  "res://scenes/clocks-formations/clocks-formation-03.tscn",
+  "res://scenes/clocks-formations/clocks-formation-04.tscn",
+  "res://scenes/clocks-formations/clocks-formation-05.tscn",
+  "res://scenes/clocks-formations/clocks-formation-06.tscn",
+  "res://scenes/clocks-formations/clocks-formation-07.tscn",
+  "res://scenes/clocks-formations/clocks-formation-08.tscn",
+  "res://scenes/clocks-formations/clocks-formation-09.tscn",
+  "res://scenes/clocks-formations/clocks-formation-10.tscn"
 ]
 
 # Called when the node enters the scene tree for the first time.
@@ -60,12 +60,6 @@ func _process(delta):
 		# self.create_clocks()
 		emit_signal("game_over")
 		# queue_free()
-		# goto_welcome_page()
-
-func goto_welcome_page():
-	var welcome = load("res://scenes/welcome.tscn").instance()
-	get_tree().get_root().add_child(welcome)
-	hide()
 
 func shuffleList(list):
 	var shuffledList = [] 

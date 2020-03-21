@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=2]
 
-[ext_resource path="res://scenes/game_over_score.gd" type="Script" id=1]
+[ext_resource path="res://scripts/game_over_score.gd" type="Script" id=1]
 [ext_resource path="res://Acme-Regular.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://particles/blue_firework.tscn" type="PackedScene" id=3]
 [ext_resource path="res://particles/red_firework.tscn" type="PackedScene" id=4]
@@ -40,6 +40,23 @@ margin_right = -52.0
 margin_bottom = -301.0
 custom_fonts/font = SubResource( 2 )
 text = "Play Again"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="high-scores" type="Button" parent="game_over-ui"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 48.0
+margin_top = -427.0
+margin_right = -52.0
+margin_bottom = -374.0
+custom_fonts/font = SubResource( 2 )
+text = "High Scores"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="goto-welcome" type="Button" parent="game_over-ui"]
 anchor_top = 1.0
@@ -67,4 +84,5 @@ position = Vector2( 281.561, 174.84 )
 [node name="RedFirework3" parent="." instance=ExtResource( 4 )]
 position = Vector2( 149.781, 18.0668 )
 [connection signal="pressed" from="game_over-ui/play-again" to="." method="_on_playagain_pressed"]
+[connection signal="pressed" from="game_over-ui/high-scores" to="." method="_on_highscores_pressed"]
 [connection signal="pressed" from="game_over-ui/goto-welcome" to="." method="_on_gotowelcome_pressed"]

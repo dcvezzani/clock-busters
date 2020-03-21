@@ -9,13 +9,15 @@ signal start_new_game
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	scores.save_highscore()
 	pass # Replace with function body.
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
 
+func loadConnections(sources):
+	#sources.gameOverScore.connect("goto_leader_board", self, "on_goto_leader_board")
+	pass
 
 func _on_gotowelcome_pressed():
 	emit_signal("goto_welcome")

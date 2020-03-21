@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://scripts/welcome.gd" type="Script" id=1]
 [ext_resource path="res://Acme-Regular.ttf" type="DynamicFontData" id=2]
@@ -6,12 +6,11 @@
 [ext_resource path="res://sounds/Click.ogg" type="AudioStream" id=4]
 [ext_resource path="res://sounds/correct.wav" type="AudioStream" id=5]
 [ext_resource path="res://sounds/incorrect.wav" type="AudioStream" id=6]
-[ext_resource path="res://sounds/Chains.ogg" type="AudioStream" id=7]
 [ext_resource path="res://sprites/clockFace.png" type="Texture" id=7]
 [ext_resource path="res://sprites/hourHand.png" type="Texture" id=8]
 [ext_resource path="res://sprites/minuteHand.png" type="Texture" id=9]
-[ext_resource path="res://scenes/minuteHand.gd" type="Script" id=10]
-[ext_resource path="res://scenes/hourHand.gd" type="Script" id=11]
+[ext_resource path="res://scripts/minuteHand.gd" type="Script" id=10]
+[ext_resource path="res://scripts/hourHand.gd" type="Script" id=11]
 [ext_resource path="res://mainFont.tres" type="DynamicFont" id=12]
 
 [sub_resource type="DynamicFont" id=1]
@@ -99,6 +98,5 @@ volume_db = -5.049
 [node name="ChainRattle" type="AudioStreamPlayer" parent="." groups=[
 "Incorrect",
 ]]
-stream = ExtResource( 7 )
 volume_db = -5.049
 [connection signal="pressed" from="welcome-ui/Button" to="." method="_on_Button_pressed"]
