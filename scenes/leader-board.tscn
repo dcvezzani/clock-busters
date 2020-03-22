@@ -4,7 +4,6 @@
 [ext_resource path="res://Acme-Regular.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://mainFont.tres" type="DynamicFont" id=3]
 
-
 [sub_resource type="DynamicFont" id=1]
 size = 64
 font_data = ExtResource( 2 )
@@ -37,6 +36,7 @@ __meta__ = {
 }
 
 [node name="play-again" type="Button" parent="leader-board-ui"]
+visible = false
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -50,7 +50,22 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="save-highscore" type="Button" parent="leader-board-ui"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 48.0
+margin_top = -200.5
+margin_right = -52.0
+margin_bottom = -147.5
+custom_fonts/font = SubResource( 2 )
+text = "Save Score"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="goto-welcome" type="Button" parent="leader-board-ui"]
+visible = false
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -193,5 +208,52 @@ align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="leader-initials-update-01" type="LineEdit" parent="leader-board-ui"]
+margin_left = 59.9001
+margin_top = 154.5
+margin_right = 117.9
+margin_bottom = 178.5
+
+[node name="leader-initials-update-02" type="LineEdit" parent="leader-board-ui"]
+visible = false
+margin_left = 59.9001
+margin_top = 202.5
+margin_right = 117.9
+margin_bottom = 226.5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="leader-initials-update-03" type="LineEdit" parent="leader-board-ui"]
+visible = false
+margin_left = 59.9001
+margin_top = 250.5
+margin_right = 117.9
+margin_bottom = 274.5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="leader-initials-update-04" type="LineEdit" parent="leader-board-ui"]
+visible = false
+margin_left = 60.4001
+margin_top = 296.5
+margin_right = 118.4
+margin_bottom = 320.5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="leader-initials-update-05" type="LineEdit" parent="leader-board-ui"]
+visible = false
+margin_left = 60.4001
+margin_top = 345.0
+margin_right = 118.4
+margin_bottom = 369.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 [connection signal="pressed" from="leader-board-ui/play-again" to="." method="_on_playagain_pressed"]
+[connection signal="pressed" from="leader-board-ui/save-highscore" to="." method="_on_savehighscore_pressed"]
 [connection signal="pressed" from="leader-board-ui/goto-welcome" to="." method="_on_gotowelcome_pressed"]

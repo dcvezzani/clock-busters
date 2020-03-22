@@ -74,10 +74,12 @@ func _on_start_new_game_game_over():
 	hide()
 
 func add_leader_board():
-	get_tree().get_root().add_child(self.leaderBoard)
-	var leaderBoard = get_tree().get_nodes_in_group("leader-board")[0]
-	leaderBoard.connect("goto_welcome", self, "_on_show_welcome_game_over")
-	leaderBoard.connect("start_new_game", self, "_on_start_new_game_game_over")	
+	var leaderBoard = getFirstNodeInGroup("leader-board")
+	if !leaderBoard:
+		get_tree().get_root().add_child(self.leaderBoard)
+		leaderBoard = getFirstNodeInGroup("leader-board")
+		leaderBoard.connect("goto_welcome", self, "_on_show_welcome_game_over")
+		leaderBoard.connect("start_new_game", self, "_on_start_new_game_game_over")	
 
 func getFirstNodeInGroup(groupName):
 	if get_tree().get_nodes_in_group(groupName):
@@ -94,13 +96,13 @@ func remove_leader_board():
 		self.leaderBoard = null
 		
 func add_score():
-	get_tree().get_root().add_child(self.game_over_score)
-	var gameOverScore = get_tree().get_nodes_in_group("game-over-score")[0]
-	gameOverScore.connect("goto_welcome", self, "_on_show_welcome_game_over")
-	gameOverScore.connect("start_new_game", self, "_on_start_new_game_game_over")
-	gameOverScore.connect("goto_leader_board", self, "_on_show_leader_board_game_over")
-	#signal goto_welcome
-	#signal start_new_game	
+	var gameOverScore = getFirstNodeInGroup("game-over-score")
+	if !gameOverScore:
+		get_tree().get_root().add_child(self.game_over_score)
+		gameOverScore = getFirstNodeInGroup("game-over-score")
+		gameOverScore.connect("goto_welcome", self, "_on_show_welcome_game_over")
+		gameOverScore.connect("start_new_game", self, "_on_start_new_game_game_over")
+		gameOverScore.connect("goto_leader_board", self, "_on_show_leader_board_game_over")
 
 func remove_score():
 	var gameOverScore = getFirstNodeInGroup("game-over-score")
@@ -114,9 +116,11 @@ func remove_score():
 		self.game_over_score = null
 	
 func add_game():
-	get_tree().get_root().add_child(self.game)
-	var levelGameplay = get_tree().get_nodes_in_group("level-gameplay")[0]
-	levelGameplay.connect("game_over", self, "_on_show_score_game_over")
+	var levelGameplay = getFirstNodeInGroup("level-gameplay")
+	if !levelGameplay:	
+		get_tree().get_root().add_child(self.game)
+		levelGameplay = getFirstNodeInGroup("level-gameplay")
+		levelGameplay.connect("game_over", self, "_on_show_score_game_over")
 		
 func remove_game():
 	var levelGameplay = getFirstNodeInGroup("level-gameplay")
