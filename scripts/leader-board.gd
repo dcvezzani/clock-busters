@@ -25,3 +25,28 @@ func _on_gotowelcome_pressed():
 
 func _on_playagain_pressed():
 	emit_signal("start_new_game")
+
+
+func _on_savehighscore_pressed():
+	var initials = $"leader-board-ui/leader-initials-update-01".text
+	$"leader-board-ui/leader-initials-update-01".hide()
+	$"leader-board-ui/save-highscore".hide()
+	
+	# END OF GAME
+	# pull storage for high scores
+	# locate desired entry
+	#	given a score, determine if it is in the top 5; if so, 
+	#	what position will it be in?
+	# if in the top 5, immediately go to leader board after game
+	#	open in "edit mode" 
+	
+	# ON SCORE SAVE
+	#	update high score storage
+	#	re-render highscores based on storage
+	#	switch to "view mode"
+	
+	$"leader-board-ui/leader-initials-01".text = initials
+	$"leader-board-ui/play-again".show()
+	$"leader-board-ui/goto-welcome".show()
+	
+	pass # Replace with function body.

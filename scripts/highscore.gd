@@ -1,5 +1,23 @@
 extends Node
 
+# currently saves a single score
+# create a new script that saves the top 5 scores, but continues
+#	to track the top most score as it does now
+# consider using JSON; https://godotengine.org/qa/8291/how-to-parse-a-json-file-i-wrote-myself
+
+# var text_json = "{\"error\": false, \"data\": {\"player_id\": 1}}"
+# var result_json = JSON.parse(text_json)
+# var result = {}
+# 
+# if result_json.error == OK:  # If parse OK
+#     var data = result_json.result
+#     print(data)
+# else:  # If parse has errors
+#     print("Error: ", result_json.error)
+#     print("Error Line: ", result_json.error_line)
+#     print("Error String: ", result_json.error_string)
+# 
+
 signal update_highscore
 
 var highscore = 0 setget set_highscore
